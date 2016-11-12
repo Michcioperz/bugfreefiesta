@@ -77,7 +77,9 @@ WSGI_APPLICATION = 'bugfreefiesta.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bugfreefiesta',
+        'NAME': 'niemagiczna',
+        'USER': 'niemagiczna',
+        'PASSWORD': os.getenv('DB_PASS', 'niemagiczna'),
         'HOST': 'aoba.at.michcioperz.space',
     }
 }
