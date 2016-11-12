@@ -1,0 +1,72 @@
+{% extends "core.html" %}
+{% block content %}
+<h2>{{ task.name }} ({{ task.slug }})</h2>
+<a href="{% url "task_submit" task.pk %}">Wyślij rozwiązanie</a>
+<h5>{{ task.submissions.all|length }} wysłanych rozwiązań</h5>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Autor</th>
+      <th>Wykonania testów czasowych</th>
+      <th>AC testów czasowych</th>
+      <th>Średni czas na AC</th>
+      <th>Wykonania testów złożonościowych</th>
+      <th>AC testów czasowych</th>
+      <th>Średnia liczba instrukcji na AC</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for submission in task.submissions.all %}
+    <tr>
+      <td><a href="{% url submission %}">{{ submission.pk }}</a></td>
+      <td>{{ submission.author }}</td>
+      <td>{{ submission.results.count }}</td>
+      <td>{{ submission.accepted_timed }}</td>
+      <td>{{ submission.average_time }}</td>
+      <td>{{ submission.pin_results.count }}</td>
+      <td>{{ submission.accepted_counted }}</td>
+      <td>{{ submission.average_instructions }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h5>{{ task.tests.all|length }} testów czasowych</h5>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Wykonania</th>
+      <th>Średni czas na AC</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for test in task.tests.all %}
+    <tr>
+      <td><a href="{% url test %}">{{ test.pk }}</a></td>
+      <td>{{ test.results.count }}</td>
+      <td>{{ test.average_time }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<h5>{{ task.pin_tests.all|length }} testów złożonościowych</h5>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Wykonania</th>
+      <th>Średnia liczba instrukcji na AC</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for test in task.pin_tests.all %}
+    <tr>
+      <td><a href="{% url test %}">{{ test.pk }}</a></td>
+      <td>{{ test.results.count }}</td>
+      <td>{{ test.average_time }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
