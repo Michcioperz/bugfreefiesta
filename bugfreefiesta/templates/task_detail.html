@@ -1,7 +1,7 @@
 {% extends "core.html" %}
 {% block content %}
 <h2>{{ task.name }} ({{ task.slug }})</h2>
-<a href="{% url "task_submit" task.pk %}">Wyślij rozwiązanie</a>
+<a href="{% url "task_submit" task.slug %}">Wyślij rozwiązanie</a>
 <h5>{{ task.submissions.all|length }} wysłanych rozwiązań</h5>
 <table>
   <thead>
