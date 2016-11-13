@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^submission/(?P<pk>\d+)/$', submission_detail, name="submission_detail"),
     url(r'^result/(?P<pk>\d+)/$', result_detail, name="result_detail"),
     url(r'^result/p(?P<pk>\d+)/$', pin_result_detail, name="pin_result_detail"),
+    url(r'^$', task_list, name="task_list"),
 ]

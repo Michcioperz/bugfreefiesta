@@ -1,7 +1,11 @@
 from django import forms
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from .models import RESULT_TYPES, Task, Test, PinTest, Submission, Result, PinResult
+
+def task_list(request):
+    tasks = get_list_or_404(Task, enabled=True)
+    return render(request, "task_list.html", dict(tasks=tasks))
 
 def task_detail(request, slug: str):
     task = get_object_or_404(Task, slug=slug, enabled=True).prefetch_related('tests', 'pin_tests', 'submissions')
