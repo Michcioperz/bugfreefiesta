@@ -1,0 +1,13 @@
+{% extends "core.html" %}
+{% block content %}
+Zgłoszenie {{ submission.pk }}
+
+Skompilowane: {% if submission.compiled %}tak{% else %}nie{% endif %}
+
+{% if submission.compiled %}
+<pre>
+  {{ submission.compilator_output|escape }}
+</pre>
+{% endif %}
+
+{% endblock content %}
