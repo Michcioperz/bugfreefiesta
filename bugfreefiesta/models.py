@@ -31,7 +31,7 @@ class Test(models.Model):
     enabled = models.BooleanField(default=True)
 
     def average_time(self):
-        return self.results.filter(result_type="AC").aggregate(models.Avg(time)).get("time__avg", "NaN")
+        return self.results.filter(result_type="AC").aggregate(models.Avg('time')).get("time__avg", "NaN")
 
     def get_absolute_url(self):
         return reverse("test_detail", kwargs=dict(pk=self.pk))
@@ -43,7 +43,7 @@ class PinTest(models.Model):
     enabled = models.BooleanField(default=True)
 
     def average_time(self):
-        return self.results.filter(result_type="AC").aggregate(models.Avg(time)).get("time__avg", "NaN")
+        return self.results.filter(result_type="AC").aggregate(models.Avg('time')).get("time__avg", "NaN")
 
     def get_absolute_url(self):
         return reverse("pin_test_detail", kwargs=dict(pk=self.pk))
@@ -58,10 +58,10 @@ class Submission(models.Model):
     timestamp = models.DateTimeField(default=timezone.now)
 
     def average_time(self):
-        return self.results.filter(result_type="AC").aggregate(models.Avg(time)).get("time__avg", "NaN")
+        return self.results.filter(result_type="AC").aggregate(models.Avg('time')).get("time__avg", "NaN")
 
     def average_instructions(self):
-        return self.pin_results.filter(result_type="AC").aggregate(models.Avg(time)).get("time__avg", "NaN")
+        return self.pin_results.filter(result_type="AC").aggregate(models.Avg('time')).get("time__avg", "NaN")
 
     def accepted_timed(self):
         return self.results.filter(result_type="AC").count()
