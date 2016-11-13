@@ -7,6 +7,7 @@
   </head>
   <body>
     <h1>Niemagiczna Sprawdzarka</h1>
+    {% if request.user.is_authenticated %}{{ request.user.username }} | <a href="{% url "auth_logout" %}">wyloguj się</a>{% else %}<a href="{% url "auth_login" %}">zaloguj się</a> | <a href="{% url "registration_register" %}">zarejestruj się</a>{% endif %}{% if request.user.is_staff %} | <a href="/admin/">panel administracyjny</a>{% endif %}
     {% block content %}
     {% endblock content %}
     <footer>
