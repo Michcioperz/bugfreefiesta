@@ -10,4 +10,26 @@ Skompilowane: {% if submission.compiled %}tak{% else %}nie{% endif %}
 </pre>
 {% endif %}
 
+Wykonano {{ submission.results|length }} z {{ submission.task.tests.count }} testów czasowych.
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Test</th>
+      <th>Wynik</th>
+      <th>Czas</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for result in submission.results %}
+    <tr>
+      <td><a href="{{ result.get_absolute_url }}">{{ result.pk }}</a></td>
+      <td><a href="{{ result.test.get_absolute_url }}">{{ result.test.pk }}</a></td>
+      <td>{{ result.result_type }}</td>
+      <td>{{ result.time }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock content %}
