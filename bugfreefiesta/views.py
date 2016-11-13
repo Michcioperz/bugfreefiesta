@@ -8,7 +8,7 @@ def task_list(request):
     return render(request, "task_list.html", dict(tasks=tasks))
 
 def task_detail(request, slug: str):
-    task = get_object_or_404(Task, slug=slug, enabled=True).prefetch_related('tests', 'pin_tests', 'submissions')
+    task = get_object_or_404(Task, slug=slug, enabled=True)
     return render(request, "task_detail.html", dict(task=task))
 
 
