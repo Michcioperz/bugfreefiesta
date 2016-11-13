@@ -8,5 +8,5 @@ class Command(BaseCommand):
             compiler = subprocess.run(['g++', '-x', 'c++', '-std=c++11', '-O2', '-o', os.path.join(os.getenv("VIRTUALENV", "/home/michcioperz"), "compiled", "{}.o".format(to_compile.pk)), '-'], universal_newlines=True, input=to_compile.code, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
             to_compile.code = ""
             to_compile.compiled = True
-            to_compile.compilator_output = "Return code {}\n".format(compiler.returncode) + compiler.stdout.read()
+            to_compile.compilator_output = "Return code {}\n".format(compiler.returncode) + compiler.stdout
             to_compile.save()
