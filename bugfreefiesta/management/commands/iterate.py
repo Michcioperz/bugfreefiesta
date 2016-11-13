@@ -10,10 +10,10 @@ class Command(BaseCommand):
             to_compile.code = ""
             to_compile.compiled = True
             to_compile.compilator_output = "Return code {}\n".format(compiler.returncode) + compiler.stdout
+            to_compile.save()
             if compiler.returncode:
                 for test in to_compile.task.tests.all():
                     Result.objects.create(submission=to_compile, test=test, result_type="CE", time=0)
-            to_compile.save()
         for task in Task.objects.filter(enabled=True):
             for submission in task.submissions.annotate(results__count=models.Count('results')).filter(results__count__lt=task.tests.count()):
                 for test in task.tests.exclude(results__submission=submission):
