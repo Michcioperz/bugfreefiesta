@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from .views import task_submit, task_detail, test_detail, pin_test_detail, submission_detail, result_detail, pin_result_detail
+from .views import task_submit, task_detail, test_detail, pin_test_detail, submission_detail, result_detail, pin_result_detail, task_list
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
