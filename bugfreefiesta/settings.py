@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['niemagiczna.sprawdzarka.staszic.space']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'registration',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -123,3 +124,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.getenv("VIRTUAL_ENV", BASE_DIR), "static_dump")
+
+
+REGISTRATION_AUTO_LOGIN = True

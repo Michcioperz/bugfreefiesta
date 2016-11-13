@@ -19,6 +19,7 @@ from .views import task_submit, task_detail, test_detail, pin_test_detail, submi
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^task/(?P<slug>\w+)/submit/$', task_submit, name="task_submit"),
     url(r'^task/(?P<slug>\w+)/$', task_detail, name="task_detail"),
     url(r'^test/(?P<pk>\d+)/$', test_detail, name="test_detail"),
