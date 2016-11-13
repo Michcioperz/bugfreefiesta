@@ -127,3 +127,4 @@ STATIC_ROOT = os.path.join(os.getenv("VIRTUAL_ENV", BASE_DIR), "static_dump")
 
 
 REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/'
