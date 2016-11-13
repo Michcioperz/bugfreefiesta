@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", 'c3mvbwp4q+7g0a*l-2140!l@1si9y^d4+^v!4vzh=1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['niemagiczna.komparatorka.staszic.space']
+ALLOWED_HOSTS = ['niemagiczna.sprawdzarka.staszic.space']
 
 
 # Application definition
