@@ -32,7 +32,7 @@
   </tbody>
 </table>
 <h5>{{ task.tests.all|length }} testów czasowych</h5>
-{#<table>
+{% comment %}<table>
   <thead>
     <tr>
       <th>#</th>
@@ -49,9 +49,9 @@
     </tr>
     {% endfor %}
   </tbody>
-</table>#}
+</table>{% endcomment %}
 <h5>{{ task.pin_tests.all|length }} testów złożonościowych</h5>
-{#<table>
+{% comment %}<table>
   <thead>
     <tr>
       <th>#</th>
@@ -68,5 +68,5 @@
     </tr>
     {% endfor %}
   </tbody>
-</table>#}
+</table>{% endcomment %}
 {% endblock content %}
