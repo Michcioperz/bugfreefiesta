@@ -13,7 +13,7 @@ def task_detail(request, slug: str):
 
 
 def submission_detail(request, pk: str):
-    if request.is_staff:
+    if request.user.is_staff:
         submission = get_object_or_404(Submission, pk=pk)
     else:
         submission = get_object_or_404(Submission, pk=pk, author=request.user)
