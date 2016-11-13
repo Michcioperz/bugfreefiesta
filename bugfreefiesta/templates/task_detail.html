@@ -19,7 +19,7 @@
   <tbody>
     {% for submission in task.submissions.all %}
     <tr>
-      <td><a href="{% url submission %}">{{ submission.pk }}</a></td>
+      <td><a href="{{ submission.get_absolute_url }}">{{ submission.pk }}</a></td>
       <td>{{ submission.author }}</td>
       <td>{{ submission.results.count }}</td>
       <td>{{ submission.accepted_timed }}</td>
@@ -43,7 +43,7 @@
   <tbody>
     {% for test in task.tests.all %}
     <tr>
-      <td><a href="{% url test %}">{{ test.pk }}</a></td>
+      <td><a href="{{ test.get_absolute_url }}">{{ test.pk }}</a></td>
       <td>{{ test.results.count }}</td>
       <td>{{ test.average_time }}</td>
     </tr>
@@ -62,7 +62,7 @@
   <tbody>
     {% for test in task.pin_tests.all %}
     <tr>
-      <td><a href="{% url test %}">{{ test.pk }}</a></td>
+      <td><a href="{{ test.get_absolute.url }}">{{ test.pk }}</a></td>
       <td>{{ test.results.count }}</td>
       <td>{{ test.average_time }}</td>
     </tr>

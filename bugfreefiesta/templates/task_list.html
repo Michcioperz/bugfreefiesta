@@ -2,7 +2,7 @@
 {% block content %}
 <ul>
 {% for task in tasks %}
-<li><a href="{% url task %}">{{ task }}</a></li>
+<li><a href="{{ task.get_absolute_url }}">{{ task }}</a></li>
 {% endfor %}
 </ul>
 {% endblock content %}
