@@ -18,7 +18,7 @@ class Command(BaseCommand):
             for submission in task.submissions.annotate(results__count=models.Count('results')).filter(results__count__lt=task.tests.count()):
                 for test in task.tests.exclude(results__submission=submission):
                     try:
-                        result = subprocess.run(['/usr/bin/time', '-o', os.path.join(os.getenv("VIRTUAL_ENV", "/home/michcioperz"), "results", "s{}t{}.time".format(submission.pk, test.pk)), os.path.join(os.getenv("VIRTUAL_ENV", "/home/michcioperz"), "compiled", "{}.o".format(to_compile.pk))], universal_newlines=True, input=test.cin, timeout=5, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+                        result = subprocess.run(['/usr/bin/time', '-o', os.path.join(os.getenv("VIRTUAL_ENV", "/home/michcioperz"), "results", "s{}t{}.time".format(submission.pk, test.pk)), os.path.join(os.getenv("VIRTUAL_ENV", "/home/michcioperz"), "compiled", "{}.o".format(submission.pk))], universal_newlines=True, input=test.cin, timeout=5, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
                         with open(os.path.join(os.getenv("VIRTUAL_ENV", "/home/michcioperz"), "results", "s{}t{}.time".format(submission.pk, test.pk))) as tfile:
                             correctness = eval(task.custom_comparator, locals=dict(cout=result.stdout, solution=test.cout)) if task.custom_comparator_enabled else (result.stdout.strip() == test.cout.strip())
                             Result.objects.create(time=sum([float(x) for x in tfile.read().split(" ", 2)[:2]]), result_type=("AC" if correctness else "WA"), submission=submission, test=test)
